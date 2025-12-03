@@ -1,0 +1,343 @@
+.floatingButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9998;
+  padding: 0;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: white;
+  border-radius: 12px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+  }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 32px;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #f3f4f6;
+    color: #111827;
+  }
+}
+
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  min-height: 200px;
+  max-height: calc(90vh - 160px);
+}
+
+.emptyState {
+  text-align: center;
+  color: #6b7280;
+  padding: 48px 24px;
+  font-size: 16px;
+}
+
+.logsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.logItem {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.logHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.logType {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.logTimestamp {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.logMessage {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.logDetail {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.logStack {
+  margin-top: 12px;
+  font-size: 12px;
+
+  summary {
+    cursor: pointer;
+    color: #667eea;
+    font-weight: 500;
+    padding: 4px 0;
+    user-select: none;
+
+    &:hover {
+      color: #764ba2;
+    }
+  }
+
+  pre {
+    margin-top: 8px;
+    padding: 12px;
+    background: #1f2937;
+    color: #f3f4f6;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 11px;
+    line-height: 1.5;
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  }
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.downloadButton {
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #5568d3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.clearButton {
+  padding: 10px 20px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 640px) {
+  .floatingButton {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .modalContent {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .modalHeader {
+    padding: 16px;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  .modalBody {
+    padding: 16px;
+    max-height: calc(95vh - 140px);
+  }
+
+  .modalFooter {
+    padding: 16px;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}

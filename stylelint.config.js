@@ -1,0 +1,23 @@
+export default {
+  extends: ["stylelint-config-standard-scss"],
+  rules: {
+    "selector-attribute-quotes": null,
+    "block-no-empty": null,
+    "selector-class-pattern": null,
+    "no-invalid-position-at-import-rule": null,
+    "rule-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "color-function-notation": null,
+    "color-function-alias-notation": null,
+    "alpha-value-notation": null,
+    "keyframes-name-pattern": null,
+    "no-descending-specificity": null,
+    "color-hex-length": null,
+    "declaration-property-value-keyword-no-deprecated": null,
+    "font-family-name-quotes": null,
+    "media-feature-range-notation": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "value-keyword-case": null,
+  },
+  ignoreFiles: ["node_modules/**", "dist/**", "build/**"],
+};
